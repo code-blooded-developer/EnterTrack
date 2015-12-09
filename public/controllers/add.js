@@ -1,27 +1,27 @@
-var app = angular.module('MyApp');
+var app =angular.module('MyApp');
 
-app.controller('AddCtrl', ['$scope', '$alert', 'Show', function($scope, $alert, Show) {
-    $scope.addShow = function() {
-      Show.save({ showName: $scope.showName },
-        function() {
-          $scope.showName = '';
+app.controller('AddCtrl', function($scope, $alert, Movie) {
+    $scope.addMovie = function() {
+      Movie.save({ movieName: $scope.movieName }).$promise
+        .then(function() {
+          $scope.movieName = '';
           $scope.addForm.$setPristine();
           $alert({
-            content: 'TV show has been added.',
-            placement: 'top-right',
-            type: 'success',
+            content: 'Movie has been added.',
+            animation: 'fadeZoomFadeDown',
+            type: 'material',
             duration: 3
           });
-        },
-        function(response) {
-          $scope.showName = '';
+        })
+        .catch(function(response) {
+          $scope.movieName = '';
           $scope.addForm.$setPristine();
           $alert({
             content: response.data.message,
-            placement: 'top-right',
-            type: 'danger',
+            animation: 'fadeZoomFadeDown',
+            type: 'material',
             duration: 3
           });
         });
     };
-  }]);
+  });

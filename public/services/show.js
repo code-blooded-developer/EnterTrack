@@ -1,5 +1,5 @@
 var app = angular.module('MyApp');
 
-app.factory('Show',['$resource',function($resource){
-	return $resource('/api/shows/:id');
-}]);
+app.factory('Movie', function($resource) {
+    return $resource('/api/movies/:_id');
+  });

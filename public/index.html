@@ -3,19 +3,19 @@
 <head>
   <base href="/">
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ShowTrackr</title>
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <title>EnterTrack</title>
+  <link href="favicon.png" rel="icon" type="image/png">
+  <link href='http://fonts.googleapis.com/css?family=Roboto|Montserrat:400,700|Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+  <link href="//cdn.jsdelivr.net/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet">
+  <link href="stylesheets/animate.css" rel="stylesheet">
   <link href="stylesheets/style.css" rel="stylesheet">
 </head>
 <body>
-<div class="navbar navbar-default navbar-static-top"
-     role="navigation" bs-navbar>
+<div ng-controller="NavbarCtrl" class="navbar navbar-default navbar-static-top" role="navigation" bs-navbar>
   <div class="navbar-header">
     <a class="navbar-brand" href="/">
-      <span class="glyphicon glyphicon-film"></span>
-      Show<strong>Trackr</strong></a>
+      <span>Enter<strong>Track</strong></span>
+    </a>
   </div>
   <ul class="nav navbar-nav">
     <li data-match-route="/$"><a href="/">Home</a></li>
@@ -31,28 +31,33 @@
   </ul>
 </div>
 
+<div ng-view class="{{pageClass}}"></div>
 
-<div ng-view></div>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-strap/dist/angular-strap.js"></script>
+<script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
 
-<script src="vendor/angular.js"></script>
-<script src="vendor/angular-animate.js"></script>
-<script src="vendor/angular-strap.js"></script>
-<script src="vendor/angular-strap.tpl.js"></script>
-<script src="vendor/angular-message.js"></script>
-<script src="vendor/angular-resource.js"></script>
-<script src="vendor/angular-route.js"></script>
-<script src="vendor/angular-cookies.js"></script>
-<script src="vendor/moment.min.js"></script>
-
-<script src="app.js"></script>
-
-<!-- Controllers -->
+<!-- <script src="app.js"></script>
+<script src="filters/fromNow.js"></script>
+<script src="directives/uniqueEmail.js"></script>
+<script src="directives/passwordStrength.js"></script>
 <script src="controllers/main.js"></script>
+<script src="controllers/detail.js"></script>
 <script src="controllers/add.js"></script>
-
-
-<!-- Services -->
+<script src="controllers/navbar.js"></script>
+<script src="controllers/login.js"></script>
+<script src="controllers/signup.js"></script>
+<script src="services/auth.js"></script>
 <script src="services/show.js"></script>
-
+<script src="services/subscription.js"></script>
+ -->
+<script src="app.min.js"></script>
+<!--<script src="templates.js"></script>-->
 </body>
 </html>
