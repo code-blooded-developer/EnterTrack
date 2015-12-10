@@ -228,67 +228,53 @@ app.get('/api/movies/:id', function(req, res, next) {
 app.post('/api/movies', function (req, res, next) {
   var movieName = req.body.movieName;
 
-  async.waterfall([
-      function(callback){
-          request.get('http://www.omdbapi.com/?r=json&t=' + movieName, function (error, response, body) {
-        
-          var data = JSON.parse(body);
+  request.get('http://www.omdbapi.com/?r=json&t=' + movieName, function (error, response, body) {
 
-          if(data.Response === 'False'){
-            return res.send(400, { message: movieName + ' was not found.' });
-          }else{
-            callback(data);
-          }
-          
-        });
-      },
-      function(data,callback){
-        Movie.findById(data._id, function(err, searchedMovie) {
-          if(err){
-            return next(err);
-          }else{
-            if(searchedMovie){
-              res.send(409, { message: data.Title + ' already exists.' });
-            }else{
-              callback(data)
-            }
-          }
-        });
-      },
-      function(data,callback){
-        var genre = data.Genre.split(',');
-        var actors = data.Actors.split(',');
-        var writer = data.Writer.split(',');
+  var data = JSON.parse(body);
 
-        var movie = new Movie({
-            _id: data.imdbID,
-            name: data.Title,
-            released: data.Released,
-            runtime: data.Runtime,
-            director: data.Director,
-            genre: genre,
-            writer: writer,
-            overview: data.Plot,
-            actors: actors,
-            language: data.Language,
-            country: data.Country,
-            awards: data.Awards,
-            poster: data.Poster,
-            imdbRating: data.imdbRating
-        });
+  if(data.Response === 'False'){
+    return res.send(400, { message: movieName + ' was not found.' });
+  }else{
+    Movie.findById(data.imdbID, function(err, searchedMovie) {
+      if(err){
+        return next(err);
+      }else{
+        if(searchedMovie){
+          res.send(409, { message: data.Title + ' already exists.' });
+        }else{
+          var genre = data.Genre.split(',');
+          var actors = data.Actors.split(',');
+          var writer = data.Writer.split(',');
 
-        callback(movie);
-      }
-    ],function(err,movie){
-      if (err) return next(err);
-        movie.save(function (err) {
-            if (err) {
-              return next(err);
-            }else{
-              res.send(200);
-            }
+          var movie = new Movie({
+              _id: data.imdbID,
+              name: data.Title,
+              released: data.Released,
+              runtime: data.Runtime,
+              director: data.Director,
+              genre: genre,
+              writer: writer,
+              overview: data.Plot,
+              actors: actors,
+              language: data.Language,
+              country: data.Country,
+              awards: data.Awards,
+              poster: data.Poster,
+              imdbRating: data.imdbRating
           });
-      });
+
+          movie.save(function (err) {
+              if (err) {
+                return next(err);
+              }else{
+                res.send(200);
+              }
+            });
+        }
+      }
+    });
+  }
+});
 });
 
 // app.post('/api/shows', function (req, res, next) {

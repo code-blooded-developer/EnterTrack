@@ -1,6 +1,5 @@
-var app =angular.module('MyApp');
-
-app.controller('AddCtrl', function($scope, $alert, Movie) {
+angular.module('MyApp')
+.controller('AddCtrl', function($scope, $alert, Movie) {
     $scope.addMovie = function() {
       Movie.save({ movieName: $scope.movieName }).$promise
         .then(function() {
