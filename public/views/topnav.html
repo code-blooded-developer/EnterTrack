@@ -18,7 +18,17 @@
               </ul>
               <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
+                  <!-- <input type="text" class="form-control" id="navbar-search-input" placeholder="Search"> -->
+                  <div class="form-control" custom-select="movie as movie.name for movie in movies | filter: { name: $searchTerm }" ng-model="movie">
+                      <div class="pull-left" style="width: 40px">
+                          <img ng-src="{{ movie.poster }}" style="width: 30px" />
+                      </div>
+                      <div class="pull-left">
+                          <strong>{{ movie.name }}</strong><br />
+                          <span>{{ movie.released | date : 'yyyy' }}</span>
+                      </div>
+                      <div class="clearfix"></div>
+                  </div>
                 </div>
               </form>
             </div><!-- /.navbar-collapse -->
