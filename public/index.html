@@ -9,9 +9,17 @@
   <link href="//cdn.jsdelivr.net/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet">
   <link href="stylesheets/animate.css" rel="stylesheet">
   <link href="stylesheets/style.css" rel="stylesheet">
+  <!-- Theme style -->
+    <link rel="stylesheet" href="stylesheets/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="stylesheets/_all-skins.min.css">
 </head>
-<body>
-<div ng-controller="NavbarCtrl" class="navbar navbar-default navbar-static-top" role="navigation" bs-navbar>
+<body class="hold-transition skin-blue layout-top-nav">
+  <div class="" ng-include="'views/topnav.html'">
+
+  </div>
+<!-- <div ng-controller="NavbarCtrl" class="navbar navbar-default navbar-static-top" role="navigation" bs-navbar>
   <div class="navbar-header">
     <a class="navbar-brand" href="/">
       <span>Enter<strong>Track</strong></span>
@@ -29,7 +37,7 @@
     <li class="navbar-text" ng-bind="currentUser.email"></li>
     <li><a href="javascript:void(0)" ng-click="logout()">Logout</a></li>
   </ul>
-</div>
+</div> -->
 
 <div ng-view class="{{pageClass}}"></div>
 

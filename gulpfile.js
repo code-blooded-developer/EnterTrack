@@ -18,6 +18,7 @@ gulp.task('sass', function() {
 
 gulp.task('compress', function() {
   gulp.src([
+    // 'public/bower_components/**/*.js',
     'public/app.js',
     'public/services/*.js',
     'public/controllers/*.js',
