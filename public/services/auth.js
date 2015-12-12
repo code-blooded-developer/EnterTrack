@@ -1,5 +1,6 @@
-angular.module('MyApp')
-  .factory('Auth', function($http, $location, $rootScope, $alert, $window) {
+var app = angular.module('MyApp');
+
+app.factory('Auth', function($http, $location, $rootScope, $alert, $window) {
     var token = $window.localStorage.token;
     if (token) {
       var payload = JSON.parse($window.atob(token.split('.')[1]));
@@ -9,7 +10,7 @@ angular.module('MyApp')
     // Asynchronously initialize Facebook SDK
     $window.fbAsyncInit = function() {
       FB.init({
-        appId: '624059410963642',
+        appId: '454938464716602',
         responseType: 'token',
         version: 'v2.0'
       });
@@ -63,7 +64,7 @@ angular.module('MyApp')
       },
       googleLogin: function() {
         gapi.auth.authorize({
-          client_id: '55262601920-5jhf3qth89okujq6a7lh8bqc9epr8475.apps.googleusercontent.com',
+          client_id: '962952522229-td0l62me1s8j420i3kmbqb9gd650i94b.apps.googleusercontent.com',
           scope: 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read',
           immediate: false
         }, function(token) {
