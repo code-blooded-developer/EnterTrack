@@ -264,12 +264,12 @@ app.post('/api/movies', function (req, res, next) {
           });
 
           movie.save(function (err) {
-              if (err) {
-                return next(err);
-              }else{
-                res.send(200);
-              }
-            });
+            if (err) {
+              return next(err);
+            }else{
+              res.send(200);
+            }
+          });
         }
       }
     });

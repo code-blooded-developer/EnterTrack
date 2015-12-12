@@ -1,4 +1,5 @@
-angular.module('MyApp')
-.factory('Movie', function($resource) {
+var app = angular.module('MyApp');
+
+app.factory('Movie', function($resource) {
     return $resource('/api/movies/:_id');
   });

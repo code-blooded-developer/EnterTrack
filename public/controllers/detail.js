@@ -1,27 +1,24 @@
-angular.module('MyApp')
-  .controller('DetailCtrl', function($scope, $rootScope, $routeParams, Show, Subscription) {
-      Show.get({ _id: $routeParams.id }, function(show) {
-        $scope.show = show;
+var app = angular.module('MyApp');
+
+app.controller('DetailCtrl', function($scope, $rootScope, $routeParams, Movie, Subscription) {
+      Movie.get({ _id: $routeParams.id }, function(movie) {
+        $scope.movie = movie;
 
         $scope.isSubscribed = function() {
-          return $scope.show.subscribers.indexOf($rootScope.currentUser._id) !== -1;
+          return $scope.movie.subscribers.indexOf($rootScope.currentUser._id) !== -1;
         };
 
         $scope.subscribe = function() {
-          Subscription.subscribe(show).success(function() {
-            $scope.show.subscribers.push($rootScope.currentUser._id);
+          Subscription.subscribe(movie).success(function() {
+            $scope.movie.subscribers.push($rootScope.currentUser._id);
           });
         };
 
         $scope.unsubscribe = function() {
-          Subscription.unsubscribe(show).success(function() {
-            var index = $scope.show.subscribers.indexOf($rootScope.currentUser._id);
-            $scope.show.subscribers.splice(index, 1);
+          Subscription.unsubscribe(movie).success(function() {
+            var index = $scope.movie.subscribers.indexOf($rootScope.currentUser._id);
+            $scope.movie.subscribers.splice(index, 1);
           });
         };
-
-        $scope.nextEpisode = show.episodes.filter(function(episode) {
-          return new Date(episode.firstAired) > new Date();
-        })[0];
       });
     });

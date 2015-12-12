@@ -1,5 +1,6 @@
-angular.module('MyApp', ['ngResource', 'ngMessages', 'ngRoute', 'ngAnimate', 'mgcrea.ngStrap'])
-  .config(function ($routeProvider, $locationProvider) {
+var app = angular.module('MyApp', ['ngResource', 'ngMessages', 'ngRoute', 'ngAnimate', 'mgcrea.ngStrap']);
+
+app.config(function ($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
 
     $routeProvider

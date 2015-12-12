@@ -23,7 +23,7 @@
         </div>
         <div class="panel-body">
             <div class="row show-list">
-                <div class="fade-repeat col-xs-4 col-md-3" ng-repeat="movie in movies | filter:query | orderBy:'rating':true">
+                <div class="fade-repeat col-xs-4 col-md-3" ng-repeat="movie in movies | filter:query | orderBy:'imdbRating':true">
                     <a href="/movies/{{movie._id}}">
                         <img class="img-rounded" ng-src="{{movie.poster}}" width="100%"/>
                     </a>
