@@ -1,4 +1,2 @@
-ShowTrackr
+EnterTrack
 ==========
-
-![](http://sahatyalkabov.com/images/projects/showtrackr.png)
