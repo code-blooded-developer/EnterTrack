@@ -13,7 +13,9 @@ var async = require('async');
 var request = require('request');
 var xml2js = require('xml2js');
 
-var agenda = require('agenda')({ db: { address: 'mongodb://harish:entertrack@ds027835.mongolab.com:27835/entertrack' } });
+//mongodb://harish:entertrack@ds027835.mongolab.com:27835/entertrack
+
+var agenda = require('agenda')({ db: { address: 'localhost/entertrack' } });
 var sugar = require('sugar');
 var nodemailer = require('nodemailer');
 var _ = require('lodash');
@@ -74,7 +76,7 @@ userSchema.methods.comparePassword = function(candidatePassword, cb) {
 var User = mongoose.model('User', userSchema);
 var Movie = mongoose.model('Movie', movieSchema);
 
-mongoose.connect('mongodb://harish:entertrack@ds027835.mongolab.com:27835/entertrack');
+mongoose.connect('localhost/entertrack');
 
 var app = express();
 

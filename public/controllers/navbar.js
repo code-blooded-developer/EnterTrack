@@ -10,7 +10,7 @@ app.controller('NavbarCtrl', function($scope, Auth,Movie) {
 
     angular.forEach($scope.movies, function(value, key) {
       if(key === 'name'){
-        search.push(value);  
+        search.push(value);
       }
     });
 
